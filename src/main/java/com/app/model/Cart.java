@@ -72,7 +72,7 @@ public class Cart {
         products.remove(itemEntry.getKey());
 
         //còn ntn lại không được @@@@
-        products.remove(product);
+//        products.remove(product);
 
     }
 

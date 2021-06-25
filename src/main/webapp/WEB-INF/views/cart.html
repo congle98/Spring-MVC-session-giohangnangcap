@@ -15,7 +15,11 @@
 <p>
   <a href="/shop">Shop</a>
 </p>
+<p th:text="${total}">
+
+</p>
 <h1>Your Cart</h1>
+
 <!--<form th:action="@{/shop}" th:object="${cart}" method="post">-->
 <!--  <h3>Total Items: <span th:text="${cart.countItemQuantity()}"></span></h3>-->
 <!--  <h3>Total Products: <span th:text="${cart.countProductQuantity()}"></span></h3>-->
@@ -55,12 +59,13 @@
           <p th:text="${product.getKey().price}+'đ'"></p></br>
 <!--          <input type="number" th:value="${product.getValue()}"></br>-->
           <span th:text="${product.getValue()}"></span>-->
-          <a id="increase_button" th:href="@{/add/__${product.getKey().id}__(action='addquantity')}"
+          <a id="increase_button" class="btn btn-info" th:href="@{/add/__${product.getKey().id}__(action='addquantity')}"
              th:text="${'+'}"></a>
         </div>
       </div>
     </tr>
   </th:block>
+  <a class="btn-success" th:href="@{/pay}">Thanh toán</a>
 </table>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -51,5 +54,13 @@ public class ProductController {
         }
         cart.addProduct(productOptional.get());
         return "redirect:/shop";
+    }
+
+    @GetMapping("/pay")
+    public String pay(@ModelAttribute Cart cart, RedirectAttributes redirectAttributes){
+        double total = cart.countTotalPayment();
+        cart.getProducts().clear();
+        redirectAttributes.addFlashAttribute("total",total);
+        return "redirect:/shopping-cart";
     }
 }
