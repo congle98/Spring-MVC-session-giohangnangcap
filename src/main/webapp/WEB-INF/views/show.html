@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .product-detail{
+            display: flex;
+        }
+        .product-description{
+            border: 1px solid black;
+            background-color: #fffcd9;
+        }
+    </style>
+</head>
+<body>
+<p>
+    <a href="/shop">Shop</a>
+</p>
+<h1>Product</h1>
+<div class="product-detail">
+    <div class="card" style="width: 8rem;">
+        <img th:src="@{'/image/' + ${product.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${product.name}"></h5>
+            <p class="card-text" th:text="${product.price}+ 'đ'"></p>
+            <a class="btn btn-primary" th:href="@{/add/__${product.id}__(action='list')}">Mua luôn cho mát</a>
+        </div>
+    </div>
+    <div class="product-description" th:text="${product.description}"></div>
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>
